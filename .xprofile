@@ -1,0 +1,3 @@
+hash kalu && kalu &
+setxkbmap gb
+xbindkeys
