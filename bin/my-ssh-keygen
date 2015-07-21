@@ -1,0 +1,25 @@
+#! /bin/sh -eu
+
+keyDir="$HOME"/.ssh/keys
+keyName="${1:?Please specify key name}"
+keyFile="$keyDir/$keyName"
+
+mkdir -p "$keyDir"
+chmod 700 "$keyDir"
+
+# ssh-keygen options:
+#  -t	type	rsa
+#  -b	bits	4096
+#  -N	new_passphrase	''	i.e. unecrypted
+#  -f	filename
+
+[ -f "$keyFile" ] && die 'File %s already exists\n' "$keyFile"
+
+ssh-keygen -t rsa -b 4096 -N '' -f "$keyFile"
+
+chmod 400 "$keyDir"/*
+
+# Now move public key to dropbox
+
+mkdir -p ~/Dropbox/ssh-keys
+mv "$keyFile".pub ~/Dropbox/ssh-keys/

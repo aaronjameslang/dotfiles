@@ -1,0 +1,23 @@
+#! /bin/sh -u
+
+alias ls='ls --color=auto'
+alias lt='ls --color=auto -lath'
+alias lss='ls --color=auto -lash'
+alias grep='grep --color=auto'
+alias mv='mv -i'
+alias pwgen='pwgen --secure --ambiguous --capitalize --numerals 32 1'
+alias catf='tail -n +0 -f'
+alias svn='svn --diff-cmd colordiff'
+
+alias pacup='yaourt -Syua --needed'
+alias pacin='yaourt -S --needed'
+
+alias start='sudo systemctl start'
+alias stop='sudo systemctl stop'
+alias restart='sudo systemctl restart'
+alias status='sudo systemctl status'
+
+if type npm > /dev/null
+then
+	alias npm='npm --python=python2'
+fi

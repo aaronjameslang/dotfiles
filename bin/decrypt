@@ -1,0 +1,4 @@
+#! /bin/bash
+#openssl enc -d -aes-256-cbc -salt | pv -cN decrypted |
+#gunzip | pv -cN decompressed
+openssl enc -d -aes-256-cbc -salt | gunzip

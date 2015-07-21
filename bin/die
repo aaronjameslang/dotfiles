@@ -1,0 +1,20 @@
+#! /bin/bash
+
+printf "$@" >&2
+
+hex=$( echo "$1" | md5sum | head --bytes -4 )
+
+# This produces a non-zero exit code
+#exitCode=$((0x$hex%255+1))
+
+# This produces a non-zero exit code
+# that is also not in the reserved ranges
+# 1 - 2, 126 - 165, and 255
+# as specifed by http://tldp.org/LDP/abs/html/exitcodes.html
+exitCode=$((0x$hex%212+3))
+if [ $exitCode -gt 125 ]
+then
+	exitCode=$(($exitCode+40))
+fi
+
+exit $exitCode

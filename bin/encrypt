@@ -1,0 +1,4 @@
+#! /bin/bash
+#gzip | pv -cN compressed |
+#openssl enc -aes-256-cbc -salt | pv -cN encrypted
+gzip | openssl enc -aes-256-cbc -salt
