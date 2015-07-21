@@ -21,3 +21,8 @@ if type npm > /dev/null
 then
 	alias npm='npm --python=python2'
 fi
+
+if hash mysql
+then
+alias mysql:='mysql --defaults-group-suffix'
+fi
