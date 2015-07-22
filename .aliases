@@ -15,7 +15,7 @@ alias stop='sudo systemctl stop'
 alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
 
-if type npm > /dev/null
+if hash npm
 then
 	alias npm='npm --python=python2'
 fi
