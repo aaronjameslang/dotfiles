@@ -10,7 +10,7 @@ set tabstop=3
 set shiftwidth=3
 set list
 set listchars=
-set listchars+=tab:>-,trail:-,nbsp:_
+set listchars+=tab:>\ ,trail:-,nbsp:_
 set listchars+=precedes:<,extends:>
 set colorcolumn=73,80
 
