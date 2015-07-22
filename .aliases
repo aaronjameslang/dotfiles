@@ -1,8 +1,6 @@
 #! /bin/sh -u
 
 alias ls='ls --color=auto'
-alias lt='ls --color=auto -lath'
-alias lss='ls --color=auto -lash'
 alias grep='grep --color=auto'
 alias mv='mv -i'
 alias pwgen='pwgen --secure --ambiguous --capitalize --numerals 32 1'
