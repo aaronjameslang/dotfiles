@@ -3,3 +3,5 @@
 	email = aaronjameslang@googlemail.com
 [push]
 	default = simple
+[merge]
+	ff = false
