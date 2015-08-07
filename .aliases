@@ -24,3 +24,10 @@ if hash mysql
 then
 alias mysql:='mysql --defaults-group-suffix'
 fi
+
+selenium_jar='/usr/share/selenium-server/selenium-server-standalone.jar'
+
+if test -f $selenium_jar
+then
+alias selenium="java -jar $selenium_jar"
+fi
