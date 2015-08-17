@@ -1,4 +1,22 @@
-execute pathogen#infect()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'powerline/powerline'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-sleuth'
+Plugin 'valloric/YouCompleteMe'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-notes'
+
+call vundle#end()
+
 syntax enable
 filetype plugin indent on
 set background=dark
@@ -21,3 +39,4 @@ set spelllang=en_gb
 
 nmap <leader>t :TagbarToggle<CR>
 let g:ctrlp_cmd = 'CtrlPMRU'
+let g:notes_directories = [ '~/Dropbox/vim-notes' ]
