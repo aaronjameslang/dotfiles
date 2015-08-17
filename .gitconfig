@@ -4,4 +4,4 @@
 [push]
 	default = simple
 [merge]
-	ff = false
+	ff = only
