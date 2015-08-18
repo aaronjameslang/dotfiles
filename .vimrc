@@ -3,6 +3,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'powerline/powerline'
@@ -17,26 +18,25 @@ Plugin 'xolox/vim-notes'
 
 call vundle#end()
 
-syntax enable
-filetype plugin indent on
-set background=dark
 colorscheme solarized
+filetype plugin indent on
+syntax enable
 
-set number
-set mouse=a
-set mousemodel=popup_setpos
-set tabstop=3
-"set shiftwidth=3
-set list
-set listchars=
-set listchars+=tab:>\ ,trail:-,nbsp:_
-set listchars+=precedes:<,extends:>
-set colorcolumn=73,80
-set nowrap
-set linebreak
-set dir^=~/.vim/swp//
-set spelllang=en_gb
-
-nmap <leader>t :TagbarToggle<CR>
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:notes_directories = [ '~/Dropbox/vim-notes' ]
+let g:table_mode_corner="|"
+
+nmap <leader>t :TagbarToggle<CR>
+
+set background=dark
+set colorcolumn=73,80
+set dir^=~/.vim/swp//
+set linebreak
+set list
+set listchars=precedes:<,extends:>,tab:>\ ,trail:-,nbsp:_
+set mouse=a
+set mousemodel=popup_setpos
+set nowrap
+set number
+set spelllang=en_gb
+set tabstop=3
