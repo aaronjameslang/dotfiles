@@ -1,0 +1,9 @@
+#! /bin/sh -e
+
+#if test -z "$1" ; then
+  #echo "$1" | "$0"
+#else
+  #fold -w 64 | sed "s/^/'/" | sed "s/$/'./"
+#fi
+
+fold -w 64 | sed "s/^/'/" | sed "s/$/'./"
