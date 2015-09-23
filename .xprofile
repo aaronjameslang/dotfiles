@@ -1,3 +1,4 @@
 hash kalu && kalu &
+hash skype && skype &
 setxkbmap gb
 xbindkeys
