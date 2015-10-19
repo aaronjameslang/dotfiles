@@ -8,3 +8,5 @@
 	tool = meld
 [diff]
 	tool = meld
+[core]
+	excludesfile = ~/.git-ignore
