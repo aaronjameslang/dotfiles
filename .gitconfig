@@ -5,3 +5,6 @@
 	default = simple
 [merge]
 	ff = only
+	tool = meld
+[diff]
+	tool = meld
