@@ -31,6 +31,7 @@ let g:table_mode_corner="|"
 nmap <leader>t :TagbarToggle<CR>
 
 set background=dark
+set clipboard=unnamedplus
 set colorcolumn=73,80
 set dir^=~/.vim/swp//
 set hlsearch
