@@ -3,8 +3,10 @@
 	email = aaronjameslang@googlemail.com
 [push]
 	default = simple
+[pull]
+	rebase = true
 [merge]
-	ff = only
+#	ff = only
 	tool = meld
 [diff]
 	tool = meld
