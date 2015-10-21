@@ -26,6 +26,7 @@ syntax enable
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:notes_directories = [ '~/Dropbox/vim-notes' ]
 let g:notes_smart_quotes = 0
+let g:syntastic_javascript_checkers = ['jscs','jshint']
 let g:table_mode_corner="|"
 
 nmap <leader>t :TagbarToggle<CR>
