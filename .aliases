@@ -31,3 +31,5 @@ if test -f $selenium_jar
 then
 alias selenium="java -jar $selenium_jar"
 fi
+
+alias ssh-keygen='ssh-keygen -b 4096'
