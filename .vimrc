@@ -44,4 +44,4 @@ set mousemodel=popup_setpos
 set nowrap
 set number
 set spelllang=en_gb
-set tabstop=3
+set tabstop=2
