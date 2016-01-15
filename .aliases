@@ -6,6 +6,8 @@ alias mv='mv -i'
 alias pwgen='pwgen --secure --ambiguous --capitalize --numerals 32 1'
 alias catf='tail -n +0 -f'
 alias svn='svn --diff-cmd colordiff'
+alias phpcs='phpcs --standard=PSR2'
+alias phpcbf='phpcbf --standard=PSR2'
 
 alias pacup='yaourt -Syua --needed'
 alias pacin='yaourt -S --needed'
