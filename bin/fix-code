@@ -1,0 +1,7 @@
+#! /bin/sh
+set -eu
+
+branch=$1
+
+git diff $branch --name-only | xargs -n 1 editorconfig-tools fix
+git diff $branch --name-only | grep php | xargs -n 1 phpcbf --standard=psr2
