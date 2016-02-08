@@ -6,7 +6,7 @@
 [pull]
 	rebase = true
 [merge]
-#	ff = only
+	ff = false
 	tool = meld
 [diff]
 	tool = meld
