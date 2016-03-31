@@ -1,0 +1,37 @@
+#! /bin/sh
+set -eu
+
+grep -v 'as$' |
+grep -v 'db$' |
+grep -v 'doc$' |
+grep -v 'docx$' |
+grep -v 'fla$' |
+grep -v 'gif$' |
+grep -v 'gz$' |
+grep -v 'jpg$' |
+grep -v 'map$' |
+grep -v 'mp4$' |
+grep -v 'mwb$' |
+grep -v 'mxml$' |
+grep -v 'pdf$' |
+grep -v 'phar$' |
+grep -v 'png$' |
+grep -v 'psd$' |
+grep -v 'swc$' |
+grep -v 'swf$' |
+grep -v 'swf.old$' |
+grep -v 'swz$' |
+grep -v 'ttf$' |
+grep -v 'wsdl$' |
+grep -v 'xls$' |
+grep -v 'xlsx$' |
+grep -v 'xsd$' |
+grep -v 'zip$' |
+
+while read -r file
+do
+  test -f "$file" && echo "$file"
+done |
+
+sort |
+uniq

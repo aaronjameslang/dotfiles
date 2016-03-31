@@ -1,0 +1,5 @@
+#! /bin/sh
+set -eu
+
+#git log --pretty=format: --name-only --since=2016-01-01 | filter-fixable-files
+git log --pretty=format: --name-only --since='2 weeks ago' | filter-fixable-files

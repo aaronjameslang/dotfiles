@@ -1,7 +1,12 @@
 #! /bin/sh
 set -eu
 
-branch=$1
+if test "$#" -gt 0
+then
+  fixable_files="fixable-branch-files $1"
+else
+  fixable_files="fixable-recent-files"
+fi
 
-git diff $branch --name-only | xargs -n 1 editorconfig-tools fix
-git diff $branch --name-only | grep php | xargs -n 1 phpcbf --standard=psr2
+$fixable_files |            xargs -n 1 -d '\n' editorconfig-tools fix
+$fixable_files | grep php | xargs -n 1 -d '\n' phpcbf --standard=psr2

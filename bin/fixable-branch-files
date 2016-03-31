@@ -1,0 +1,6 @@
+#! /bin/sh
+set -eu
+
+branch=$1
+
+git diff $branch --name-only | filter-fixable-files
