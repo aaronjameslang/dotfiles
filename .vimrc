@@ -41,6 +41,7 @@ set hlsearch
 set linebreak
 set list
 set listchars=precedes:<,extends:>,tab:>\ ,trail:-,nbsp:_
+set modeline
 set mouse=a
 set mousemodel=popup_setpos
 set nowrap
