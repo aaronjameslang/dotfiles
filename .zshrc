@@ -5,7 +5,7 @@ test -f $file && source $file
 file="/usr/share/oh-my-zsh/zshrc"
 test -f $file && source $file
 
-if test "$TERM" != screen
+if test -z "$TMUX"
 then
   exec tmux
 else
