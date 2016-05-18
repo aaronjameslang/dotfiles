@@ -7,7 +7,19 @@ test -f $file && source $file
 
 if test -z "$TMUX"
 then
-  exec tmux
+  session_num=$(
+    tmux list-sessions |
+    grep -v attached |
+    grep -oP '^\d+:' |
+    grep -oP '^\d+' |
+    head -1
+  )
+  if test $session_num
+  then
+    exec tmux attach -t $session_num
+  else
+    exec tmux
+  fi
 else
   # Hack, because tmux forgets $PATH
   . ~/.env-var
