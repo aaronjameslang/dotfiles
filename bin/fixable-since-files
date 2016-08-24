@@ -1,0 +1,4 @@
+#! /bin/sh
+set -eu
+
+git log --pretty=format: --name-only --since="$1" | filter-fixable-files

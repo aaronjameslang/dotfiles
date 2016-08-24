@@ -1,0 +1,5 @@
+#! /bin/sh
+set -eu
+
+find . | filter-fixable-files |            xargs -n 1 -d '\n' editorconfig-tools fix
+find . | filter-fixable-files | grep php | xargs -n 1 -d '\n' phpcbf --standard=psr2

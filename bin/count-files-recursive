@@ -1,0 +1,4 @@
+#! /bin/sh
+set -eu
+
+find "${1-.}" -type f | wc -l
