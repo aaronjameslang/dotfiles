@@ -17,11 +17,6 @@ alias stop='sudo systemctl stop'
 alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
 
-if hash npm 2>/dev/null
-then
-	alias npm='npm --python=python2'
-fi
-
 if hash mysql 2>/dev/null
 then
 alias mysql:='mysql --defaults-group-suffix'
