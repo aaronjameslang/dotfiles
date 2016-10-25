@@ -1,0 +1,9 @@
+#! /bin/sh
+set -eu
+
+if hash composer 2>/dev/null
+then
+composer global update
+fi
+
+yaourt -Syua --needed
