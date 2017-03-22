@@ -25,6 +25,7 @@ filetype plugin indent on
 syntax enable
 
 "let g:notes_unicode_enabled = 0
+let &showbreak = '!> '
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:notes_directories = [ '~/Dropbox/vim-notes' ]
 let g:notes_smart_quotes = 0
@@ -44,7 +45,7 @@ set listchars=precedes:<,extends:>,tab:>\ ,trail:-,nbsp:_
 set modeline
 set mouse=a
 set mousemodel=popup_setpos
-set nowrap
+set wrap
 set number
 set spelllang=en_gb
 set tabstop=2
