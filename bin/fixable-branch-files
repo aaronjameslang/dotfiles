@@ -1,6 +1,6 @@
 #! /bin/sh
 set -eu
 
-branch=$1
-
-git diff $branch --name-only | filter-fixable-files
+branch=${1:-origin/master}
+merge_base="$(git merge-base HEAD "$branch")"
+git diff --name-only --diff-filter=d "$merge_base" | filter-fixable-files
