@@ -1,7 +1,16 @@
 #! /bin/sh
+
+# This should be a pre-coomit hook
+
 set -eu
 
+if ! git diff --cached --exit-code --quiet
+then
+  echo 'Error: Non-empty index'
+  exit 1
+fi
+
 base_branch=$(git rev-parse --abbrev-ref HEAD)
-git branch $1
-git checkout $1
+git branch "$1"
+git checkout "$1"
 git commit --allow-empty --message "Create branch $1 based on $base_branch"
