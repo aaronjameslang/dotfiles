@@ -3,7 +3,12 @@ set -eu
 
 if hash composer 2>/dev/null
 then
-composer global update
+  composer global update
+fi
+
+if hash npm 2>/dev/null
+then
+ sudo npm -g update
 fi
 
 yaourt -Syua --needed
