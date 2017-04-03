@@ -2,6 +2,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dhruvasagar/vim-table-mode'
@@ -17,6 +18,7 @@ Plugin 'tpope/vim-sleuth'
 Plugin 'valloric/YouCompleteMe'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 call vundle#end()
 
