@@ -12,3 +12,5 @@
 	tool = meld
 [core]
 	excludesfile = ~/.git-ignore
+[init]
+	templateDir = ~/.git-template
