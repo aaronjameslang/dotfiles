@@ -19,6 +19,7 @@ else
 fi
 
 . ~/.aliases
+cd # hack
 
 file="$HOME/.oh-my-zsh/templates/zshrc.zsh-template"
 test -f $file && source $file
