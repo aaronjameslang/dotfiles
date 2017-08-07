@@ -8,6 +8,7 @@ alias catf='tail -n +0 -f'
 alias svn='svn --diff-cmd colordiff'
 alias phpcs='phpcs --standard=PSR2'
 alias phpcbf='phpcbf --standard=PSR2'
+alias uuid='uuid -v4'
 
 alias pacin='yaourt -S --needed'
 
@@ -29,3 +30,6 @@ alias selenium="java -jar $selenium_jar"
 fi
 
 alias ssh-keygen='ssh-keygen -b 4096'
+alias brix='brew audit --strict --fix'
+alias activate='. */bin/activate'
+alias gitg='nice gitg'
