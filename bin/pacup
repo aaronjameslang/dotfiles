@@ -11,4 +11,9 @@ then
  sudo npm -g update
 fi
 
+if hash brew 2>/dev/null
+then
+  brew upgrade
+fi
+
 yaourt -Syua --needed
