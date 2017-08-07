@@ -1,5 +1,8 @@
 #! /bin/sh
 set -eu
 
-find . | filter-fixable-files |            xargs -n 1 -d '\n' editorconfig-tools fix
-find . | filter-fixable-files | grep php | xargs -n 1 -d '\n' phpcbf --standard=psr2
+find . -not -path './.git/*' | filter-fixable-files |            xargs -n 1 -d '\n' dos2unix
+#find . -not -path './.git/*' | filter-fixable-files |            xargs -n 1 -d '\n' editorconfig-tools fix
+find . -not -path './.git/*' | filter-fixable-files | grep php | xargs -n 1 -d '\n' phpcbf --standard=psr2
+find . -not -path './.git/*' | filter-fixable-files | grep php | xargs -n 1 -d '\n' phpcs  --standard=psr2
+find . -not -path './.git/*' | filter-fixable-files | grep php | xargs -n 1 -d '\n' -I{} phpmd '{}' text cleancode,codesize,controversial,design,naming,unusedcode

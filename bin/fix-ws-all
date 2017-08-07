@@ -1,0 +1,4 @@
+#! /bin/sh
+set -eu
+
+find . -not -path './.git/*' | filter-fixable-files | xargs -n 1 -d '\n' editorconfig-tools fix

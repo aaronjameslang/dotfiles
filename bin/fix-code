@@ -4,4 +4,4 @@ set -eu
 fixable-branch-files |            xargs -n 1 -d '\n' dos2unix
 fixable-branch-files |            xargs -n 1 -d '\n' eclint fix
 fixable-branch-files | grep php | xargs -n 1 -d '\n' phpcbf --standard=psr2
-fixable-branch-files | grep php | xargs -n 1 -d '\n' php-cs-fixer
+fixable-branch-files | grep php | xargs -n 1 -d '\n' php-cs-fixer fix
