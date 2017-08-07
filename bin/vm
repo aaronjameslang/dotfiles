@@ -1,0 +1,8 @@
+#! /bin/sh
+set -eu
+
+if ! $(vagrant status | grep 'running' --silent) ; then
+  vagrant up ;
+fi ;
+
+vagrant ssh "$@" ;
