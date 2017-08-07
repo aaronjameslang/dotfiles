@@ -17,11 +17,6 @@ alias stop='sudo systemctl stop'
 alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
 
-if hash mysql 2>/dev/null
-then
-alias mysql:='mysql --defaults-group-suffix'
-fi
-
 selenium_jar='/usr/share/selenium-server/selenium-server-standalone.jar'
 
 if test -f $selenium_jar
