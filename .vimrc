@@ -41,6 +41,7 @@ set background=dark
 set clipboard=unnamedplus
 set colorcolumn=73,80
 set dir^=~/.vim/swp//
+set expandtab
 set hlsearch
 set linebreak
 set list
