@@ -1,0 +1,6 @@
+#! /bin/sh
+set -eux
+
+name="$(< Dockerfile md5sum | cut -b-32)"
+docker build . -t "$name"
+docker run -it -v "$(pwd)":/home/me/project:z "$name"
