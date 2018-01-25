@@ -3,11 +3,6 @@
 alias ls='ls -G'
 alias grep='grep --color=auto'
 alias mv='mv -i'
-alias pwgen='pwgen --secure --ambiguous --capitalize --numerals 32 1'
-alias catf='tail -n +0 -f'
-alias svn='svn --diff-cmd colordiff'
-alias phpcs='phpcs --standard=PSR2'
-alias phpcbf='phpcbf --standard=PSR2'
 alias uuid='uuid -v4'
 
 alias pacin='yaourt -S --needed'
@@ -24,7 +19,6 @@ then
 alias selenium="java -jar $selenium_jar"
 fi
 
-alias ssh-keygen='ssh-keygen -b 4096'
 alias brix='brew audit --strict --fix'
 alias activate='. */bin/activate'
 alias gitg='nice gitg'
