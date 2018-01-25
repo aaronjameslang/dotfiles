@@ -3,8 +3,8 @@ then
   session_num=$(
     tmux list-sessions |
     grep -v attached |
-    grep -oP '^\d+:' |
-    grep -oP '^\d+' |
+    grep -oE '^\d+:' |
+    grep -oE '^\d+' |
     head -1
   )
   if test $session_num
