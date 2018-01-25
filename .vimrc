@@ -3,7 +3,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'airblade/vim-gitgutter'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'editorconfig/editorconfig-vim'
@@ -23,7 +23,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 call vundle#end()
 
-colorscheme solarized
+"colorscheme solarized # Yet to fix dark highlight issue
 filetype plugin indent on
 syntax enable
 
