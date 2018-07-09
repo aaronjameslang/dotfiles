@@ -13,9 +13,6 @@ then
   else
     exec tmux
   fi
-else
-  # Hack, because tmux forgets $PATH
-  . ~/.env-var
 fi
 
 . ~/.aliases

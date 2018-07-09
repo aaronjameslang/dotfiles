@@ -2,15 +2,14 @@
 
 alias ls='ls -G'
 alias grep='grep --color=auto'
-alias mv='mv -i'
 alias uuid='uuid -v4'
 
 alias pacin='yaourt -S --needed'
 
-alias start='sudo systemctl start'
-alias stop='sudo systemctl stop'
+alias    stop='sudo systemctl    stop'
+alias   start='sudo systemctl   start'
+alias  status='sudo systemctl  status'
 alias restart='sudo systemctl restart'
-alias status='sudo systemctl status'
 
 selenium_jar='/usr/share/selenium-server/selenium-server-standalone.jar'
 
@@ -22,3 +21,5 @@ fi
 alias brix='brew audit --strict --fix'
 alias activate='. */bin/activate'
 alias gitg='nice gitg'
+alias vim='nvim'
+alias gc='git cz'

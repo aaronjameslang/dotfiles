@@ -14,8 +14,11 @@ Plugin 'powerline/powerline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-surround'
 Plugin 'valloric/YouCompleteMe'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
@@ -27,6 +30,8 @@ call vundle#end()
 filetype plugin indent on
 syntax enable
 
+highlight colorcolumn ctermbg=0
+
 "let g:notes_unicode_enabled = 0
 let &showbreak = '!> '
 let g:ctrlp_cmd = 'CtrlPMRU'
@@ -36,10 +41,10 @@ let g:syntastic_javascript_checkers = ['standard', 'jscs','jshint']
 let g:table_mode_corner="|"
 
 nmap <leader>t :TagbarToggle<CR>
-
+"23456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 set background=dark
 set clipboard=unnamedplus
-set colorcolumn=73,80
+set colorcolumn=+1
 set dir^=~/.vim/swp//
 set expandtab
 set hlsearch
@@ -49,7 +54,9 @@ set listchars=precedes:<,extends:>,tab:>\ ,trail:-,nbsp:_
 set modeline
 set mouse=a
 set mousemodel=popup_setpos
-set wrap
 set number
+set shiftwidth=2
 set spelllang=en_gb
 set tabstop=2
+set textwidth=80
+set wrap
