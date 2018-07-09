@@ -1,0 +1,4 @@
+#! /bin/sh
+set -eu
+
+java -jar ~/.local/opt/simian-*/bin/simian-*.jar "$@"
