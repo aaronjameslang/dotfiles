@@ -1,0 +1,25 @@
+#! /bin/sh
+set -eux
+
+cat << EOF
+module.exports = {
+  rules: {
+    // Exceptions to airbnb standard,
+    //   these should be considered tech debt and
+    //   gradually fixed & removed from this list
+EOF
+
+eslint $1 |
+awk '{print $NF}' |
+grep '^[a-z]' |
+sed '\#[^0-9a-zA-Z/-]#d' |
+sort |
+uniq -c |
+sort -rhs|
+awk '{printf "    \"%s\": 0, // ~%s violations\n", $NF, $1}' |
+tr '"' "'"
+
+cat << EOF
+  },
+};
+EOF
