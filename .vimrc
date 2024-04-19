@@ -58,5 +58,5 @@ set number
 set shiftwidth=2
 set spelllang=en_gb
 set tabstop=2
-set textwidth=80
+set textwidth=72
 set wrap
