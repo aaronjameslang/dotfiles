@@ -13,3 +13,5 @@
 [core]
 	excludesfile = ~/.git-ignore
 	ignorecase = false
+[init]
+	defaultBranch = main

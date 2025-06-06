@@ -1,10 +1,13 @@
+# Run for interactive shells
+# See https://zsh.sourceforge.io/Guide/zshguide02.html
+
 if test -z "$TMUX"
 then
   session_num=$(
     tmux list-sessions |
     grep -v attached |
-    grep -oE '^\d+:' |
-    grep -oE '^\d+' |
+    grep -oE '^[0-9]+:' |
+    grep -oE '^[0-9]+' |
     head -1
   )
   if test $session_num
@@ -16,7 +19,7 @@ then
 fi
 
 . ~/.aliases
-cd # hack
+# cd # hack
 
 file="$HOME/.oh-my-zsh/templates/zshrc.zsh-template"
 test -f $file && source $file
@@ -25,12 +28,26 @@ test -f $file && source $file
 
 ret_status="$(echo "${ret_status:-}" | sed 's/➜/✔/' | sed 's/➜/✘/')"
 
-export NVM_DIR="$HOME/.nvm"
+#. ~/.nvm-init
 
-  if test -e "$NVM_DIR/nvm.sh"
-then source  "$NVM_DIR/nvm.sh"  # This loads nvm
-elif test -e /usr/local/opt/nvm/nvm.sh
-then source  /usr/local/opt/nvm/nvm.sh
-fi
+# Other nvm config in ~/.zshenv
+#! test -e "$NVM_DIR/bash_completion" || source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-! test -e "$NVM_DIR/bash_completion" || source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+## tabtab source for serverless package
+## uninstall by removing these lines or running `tabtab uninstall serverless`
+#[[ -f /home/aaron/shortcake/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/aaron/shortcake/node_modules/tabtab/.completions/serverless.zsh
+## tabtab source for sls package
+## uninstall by removing these lines or running `tabtab uninstall sls`
+#[[ -f /home/aaron/shortcake/node_modules/tabtab/.completions/sls.zsh ]] && . /home/aaron/shortcake/node_modules/tabtab/.completions/sls.zsh
+## tabtab source for slss package
+## uninstall by removing these lines or running `tabtab uninstall slss`
+#[[ -f /home/aaron/shortcake/node_modules/tabtab/.completions/slss.zsh ]] && . /home/aaron/shortcake/node_modules/tabtab/.completions/slss.zsh
+## added by travis gem
+#[ -f /home/aaron/.travis/travis.sh ] && source /home/aaron/.travis/travis.sh
+#
+## Added by serverless binary installer
+#export PATH="$HOME/.serverless/bin:$PATH"
+
+# fnm
+#export PATH=/home/aaron/.fnm:$PATH
+#eval "`fnm env`"

@@ -19,7 +19,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
-Plugin 'valloric/YouCompleteMe'
+"Plugin 'valloric/YouCompleteMe'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-notes'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -41,10 +41,9 @@ let g:syntastic_javascript_checkers = ['standard', 'jscs','jshint']
 let g:table_mode_corner="|"
 
 nmap <leader>t :TagbarToggle<CR>
-"23456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
-set background=dark
+"set background=dark
 set clipboard=unnamedplus
-set colorcolumn=+1
+set colorcolumn=73,81
 set dir^=~/.vim/swp//
 set expandtab
 set hlsearch
@@ -58,5 +57,5 @@ set number
 set shiftwidth=2
 set spelllang=en_gb
 set tabstop=2
-set textwidth=80
+set textwidth=72
 set wrap

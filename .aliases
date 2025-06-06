@@ -23,3 +23,8 @@ alias activate='. */bin/activate'
 alias gitg='nice gitg'
 alias vim='nvim'
 alias gc='git cz'
+
+# I aways typo this, and I don't need ghostscript
+alias gs='gst'
+
+alias tf=terraform
