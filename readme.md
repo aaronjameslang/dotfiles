@@ -17,7 +17,19 @@ git clone git@github.com:aaronjameslang/dotfiles.git
 stow dotfiles
 ```
 
-## Futher Reading
+## Checking Status
+
+To preview what `stow` would do without making any changes:
+
+```
+stow -n -v dotfiles
+```
+
+This performs a dry run (`-n`) with verbose output (`-v`),
+showing which files need symlinking and any conflicts, without
+modifying the filesystem.
+
+## Further Reading
 
 - https://www.gnu.org/software/stow/manual/stow.html
 - http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html
