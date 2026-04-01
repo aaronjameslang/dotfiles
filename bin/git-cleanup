@@ -1,0 +1,18 @@
+#!/bin/sh
+# Usage: git-cleanup [--dry-run]
+# Example: per-git-dir git-cleanup --dry-run
+#
+# Tidies up a git repo:
+# - Prunes stale worktree references
+# - Fetches and prunes deleted remote tracking branches
+# - Removes local branches merged into main/master/develop
+# - Removes worktrees with no unpushed changes
+set -eu
+
+dry_run=""
+if [ "${1:-}" = "--dry-run" ]; then
+  dry_run="--dry-run"
+fi
+
+git-branch-cleanup $dry_run
+git-worktree-cleanup $dry_run

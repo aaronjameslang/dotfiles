@@ -29,6 +29,15 @@ This performs a dry run (`-n`) with verbose output (`-v`),
 showing which files need symlinking and any conflicts, without
 modifying the filesystem.
 
+## Linking Individual Files or Directories
+
+To link a single file or directory without `stow`, use `ln -s`:
+
+```
+ln -s ~/stow/dotfiles/.vimrc ~/.vimrc
+ln -s ~/stow/dotfiles/bin ~/bin
+```
+
 ## Further Reading
 
 - https://www.gnu.org/software/stow/manual/stow.html

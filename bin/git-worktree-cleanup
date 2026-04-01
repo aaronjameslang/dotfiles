@@ -1,0 +1,58 @@
+#!/bin/sh
+# Usage: git-worktree-cleanup [--dry-run] [--verbose]
+# Example: per-git-dir git-worktree-cleanup --dry-run
+# Example: per-git-dir git-worktree-cleanup --verbose
+# Removes worktrees that have no uncommitted or unpushed changes.
+# Worktrees with no upstream are kept, as they may have
+# local-only work that would be lost.
+set -eu
+
+# Prune stale worktree references
+git worktree prune
+
+dry_run=false
+verbose=false
+for arg in "$@"; do
+  case "$arg" in
+    --dry-run) dry_run=true ;;
+    --verbose) verbose=true ;;
+  esac
+done
+
+# List all worktrees, skip the first (main worktree)
+git worktree list --porcelain |
+  grep '^worktree ' |
+  sed 's/^worktree //' |
+  tail -n +2 |
+  while read -r wt; do
+    reasons=""
+
+    # Check for uncommitted or untracked files
+    if [ -n "$(git -C "$wt" status --porcelain)" ]; then
+      reasons="uncommitted changes"
+    fi
+
+    # Check for unpushed commits, or no upstream at all
+    if git -C "$wt" rev-parse @{upstream} >/dev/null 2>&1; then
+      unpushed=$(git -C "$wt" rev-list @{upstream}..HEAD | wc -l | tr -d ' ')
+      if [ "$unpushed" -gt 0 ]; then
+        reasons="${reasons:+$reasons, }$unpushed unpushed commits"
+      fi
+    else
+      # No upstream means we can't verify the work is pushed
+      reasons="${reasons:+$reasons, }no upstream"
+    fi
+
+    if [ -z "$reasons" ]; then
+      if [ "$dry_run" = true ]; then
+        echo "$wt"
+      else
+        git worktree remove "$wt"
+      fi
+    elif [ "$verbose" = true ]; then
+      echo "$wt: $reasons"
+    fi
+  done
+
+# Clean up references to any worktrees we just removed
+git worktree prune

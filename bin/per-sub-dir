@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+
+for dir in */; do
+  echo "=== $dir ==="
+  (cd "$dir" && "$@")
+done

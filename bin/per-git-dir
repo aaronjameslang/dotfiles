@@ -1,0 +1,13 @@
+#!/bin/sh
+# Usage: per-git-dir <command> [args...]
+# Example: per-git-dir git worktree list
+# Example: per-git-dir git worktree prune
+set -eu
+
+dirs=$(find . -maxdepth 3 -name .git -type d -prune)
+
+for gitdir in $dirs; do
+	dir=$(dirname "$gitdir")
+	echo "=== $dir ==="
+	(cd "$dir" && "$@")
+done

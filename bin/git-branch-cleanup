@@ -1,0 +1,45 @@
+#!/bin/sh
+set -eu
+
+# Prune remote tracking branches deleted on the remote
+git fetch --all --prune --quiet
+
+# Collect branches merged into current branch or well-known bases
+merged=$(git branch --merged)
+for base in main master develop; do
+	git show-ref --verify --quiet "refs/heads/$base" || continue
+	merged="$merged
+$(git branch --merged "$base")"
+done
+
+# Deduplicate and exclude protected branches
+branches=$(echo "$merged" |
+	grep -v '^\*\|main$\|master$\|develop$' |
+	sort -u) || exit 0
+
+# Local branches whose remote tracking branch has been deleted
+gone=$(git branch -vv |
+	grep ': gone]' |
+	awk '{print $1}') || true
+
+# Combine merged and gone, deduplicate
+branches=$(printf '%s\n%s\n' "$branches" "$gone" |
+	grep -v '^\*\|main$\|master$\|develop$' |
+	sort -u) || exit 0
+
+if [ -z "$branches" ]; then
+	exit 0
+fi
+
+echo "$branches"
+
+if [ "${1:-}" = "--dry-run" ]; then
+	exit 0
+fi
+
+printf 'Delete these branches? [y/N] '
+read -r confirm
+case "$confirm" in
+	y|Y) echo "$branches" | xargs git branch -D ;;
+	*) exit 0 ;;
+esac
