@@ -38,6 +38,19 @@ ln -s ~/stow/dotfiles/.vimrc ~/.vimrc
 ln -s ~/stow/dotfiles/bin ~/bin
 ```
 
+## Caution
+
+I want to avoid installing these files and killing
+whatever shell is being configured because of a bug in the config.
+This would then be very hard to fix with a broken shell.
+
+As such, caution is advised. This repo should probably be reorganised
+so individual configs can be installed as needed, which will allow more
+oversight over what is being installed.
+
+In fact some config files would be better replaced with short guides
+explaining what config is advised and why, rather than verbatim copies.
+
 ## Further Reading
 
 - https://www.gnu.org/software/stow/manual/stow.html
