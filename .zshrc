@@ -17,8 +17,6 @@ then
   fi
 fi
 
-. ~/.aliases
-
 file="$HOME/.oh-my-zsh/templates/zshrc.zsh-template"
 test -f $file && source $file
 file="/usr/share/oh-my-zsh/zshrc"
