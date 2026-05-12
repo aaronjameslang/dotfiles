@@ -1,4 +1,0 @@
-#! /bin/sh
-set -eu
-
-mysqldump "/@" | sed 's/VALUES (/VALUES\n(/g' | sed 's/),(/),\n(/g'

@@ -1,5 +1,0 @@
-#! /bin/sh
-set -eu
-
-fixable-branch-files |            xargs -n 1 -d '\n' dos2unix
-fixable-branch-files |            xargs -n 1 -d '\n' eclint fix

@@ -1,4 +1,0 @@
-hash kalu && kalu &
-hash skypeforlinux && skypeforlinux &
-setxkbmap gb
-xbindkeys
