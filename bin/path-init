@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# Sets PATH with directories that exist
+# Checks a predefined list of common development paths
+# Usage: source path-init (or . path-init)
+
+valid_paths=""
+
+# Specific local paths should take precendence before
+# more general global paths
+
+# Relative paths: always add without checking
+for dir in \
+  "./node_modules/.bin" \
+  "./vendor/bin" \
+  "./vendor/bundle/ruby/2.3.0/bin"
+do
+  if [ -z "$valid_paths" ]; then
+    valid_paths="$dir"
+  else
+    valid_paths="$valid_paths:$dir"
+  fi
+done
+
+# Absolute paths: only add if they exist
+for dir in \
+  "$HOME/.cargo/bin" \
+  "$HOME/.composer/vendor/bin" \
+  "$HOME/.config/composer/vendor/bin" \
+  "$HOME/.gem/ruby/2.2.0/bin" \
+  "$HOME/.gem/ruby/2.3.0/bin" \
+  "$HOME/.linuxbrew/bin" \
+  "$HOME/.local/bin" \
+  "$HOME/Dropbox/bin" \
+  "$HOME/Library/Python/2.7/bin" \
+  "$HOME/bin" \
+  "$HOME/go/bin" \
+  "/Applications/Postgres.app/Contents/Versions/latest/bin" \
+  "/opt/homebrew/bin"
+do
+  if [ -d "$dir" ]; then
+    if [ -z "$valid_paths" ]; then
+      valid_paths="$dir"
+    else
+      valid_paths="$valid_paths:$dir"
+    fi
+  fi
+done
+
+[ -n "$valid_paths" ] && export PATH="$valid_paths:$PATH"
