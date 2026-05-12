@@ -1,9 +1,0 @@
-#! /bin/sh
-set -eu
-
-< .gitignore \
-sort --ignore-case --dictionary-order \
-| uniq \
-> .gitignore.sorted ;
-
-mv .gitignore.sorted .gitignore

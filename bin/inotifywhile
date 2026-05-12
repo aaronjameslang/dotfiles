@@ -1,7 +1,0 @@
-#! /bin/sh -eu
-
-while true
-do
-  inotifywait -r .
-  $1
-done

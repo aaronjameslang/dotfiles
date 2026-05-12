@@ -1,2 +1,0 @@
-#! /bin/bash -eu
-mplayer tv:// -vf mirror
