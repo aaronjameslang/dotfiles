@@ -4,6 +4,15 @@ These are my dotfiles, mostly for personal use but you may find some inspiration
 
 Many are out of date, almost all need better documentation.
 
+I was scared of breaking my shell/editor/etc on a new system
+Originally this was a collection of files which could be installed as a unit, but I never used it this way because
+by blindly copying config across.
+
+I'm still working out what my solution for this is, but
+it could look like breaking the files in to packages,
+one-size-fits-all config files.
+or replacing some with guides or cookbooks instead of
+
 ## Installation
 
 To install all files quickly on a new machine, `stow` can be used.
@@ -37,19 +46,6 @@ To link a single file or directory without `stow`, use `ln -s`:
 ln -s ~/stow/dotfiles/.vimrc ~/.vimrc
 ln -s ~/stow/dotfiles/bin ~/bin
 ```
-
-## Caution
-
-I want to avoid installing these files and killing
-whatever shell is being configured because of a bug in the config.
-This would then be very hard to fix with a broken shell.
-
-As such, caution is advised. This repo should probably be reorganised
-so individual configs can be installed as needed, which will allow more
-oversight over what is being installed.
-
-In fact some config files would be better replaced with short guides
-explaining what config is advised and why, rather than verbatim copies.
 
 ## Further Reading
 
