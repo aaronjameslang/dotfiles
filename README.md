@@ -1,21 +1,18 @@
 # dotfiles
 
-These are my dotfiles, mostly for personal use but you may find some inspiration here.
+These are my dotfiles, organised as a monorepo of stow packages, mostly for personal use but you may find some inspiration here.
 
 Many are out of date, almost all need better documentation.
 
-I was scared of breaking my shell/editor/etc on a new system
-Originally this was a collection of files which could be installed as a unit, but I never used it this way because
-by blindly copying config across.
+## Structure
 
-I'm still working out what my solution for this is, but
-it could look like breaking the files in to packages,
-one-size-fits-all config files.
-or replacing some with guides or cookbooks instead of
+This repository uses GNU stow to manage dotfiles across multiple packages. Each package in the `packages/` directory can be installed independently:
+
+- **shell** — Shell configuration files (.profile, .zshrc, .zprofile) and documentation
 
 ## Installation
 
-To install all files quickly on a new machine, `stow` can be used.
+To install packages on a new machine, `stow` can be used.
 
 `stow` is available via homebrew and most other package managers.
 
@@ -23,7 +20,14 @@ To install all files quickly on a new machine, `stow` can be used.
 mkdir ~/stow
 cd ~/stow
 git clone git@github.com:aaronjameslang/dotfiles.git
-stow dotfiles
+cd dotfiles
+stow -d packages -t ~ shell
+```
+
+To install all packages:
+
+```
+stow -d packages -t ~ */
 ```
 
 ## Checking Status
@@ -31,7 +35,8 @@ stow dotfiles
 To preview what `stow` would do without making any changes:
 
 ```
-stow -n -v dotfiles
+cd dotfiles
+stow -n -v -d packages -t ~ shell
 ```
 
 This performs a dry run (`-n`) with verbose output (`-v`),
@@ -43,7 +48,7 @@ modifying the filesystem.
 To link a single file or directory without `stow`, use `ln -s`:
 
 ```
-ln -s ~/stow/dotfiles/.vimrc ~/.vimrc
+ln -s ~/stow/dotfiles/packages/shell/.zshrc ~/.zshrc
 ln -s ~/stow/dotfiles/bin ~/bin
 ```
 
