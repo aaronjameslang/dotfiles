@@ -24,17 +24,7 @@ test -f $file && source $file
 
 ret_status="$(echo "${ret_status:-}" | sed 's/➜/✔/' | sed 's/➜/✘/')"
 
-export NVM_DIR="$HOME/.nvm"
-
-  if test -e "$NVM_DIR/nvm.sh"
-then source  "$NVM_DIR/nvm.sh"  # This loads nvm
-elif test -e /usr/local/opt/nvm/nvm.sh
-then source  /usr/local/opt/nvm/nvm.sh
-fi
-
 if which fnm
 then
   eval "$(fnm env --use-on-cd)"
 fi
-
-! test -e "$NVM_DIR/bash_completion" || source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
