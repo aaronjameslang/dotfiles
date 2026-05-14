@@ -1,3 +1,11 @@
+---
+title: Git Core Excludesfile
+description: Understanding and configuring git's global excludes file for per-user ignore patterns
+tags:
+  - git
+  - dotfiles
+---
+
 # Git Core Excludesfile
 
 The `core.excludesfile` option in git allows you to define a global file that applies to all repositories on your machine. This is useful for ignoring files that are specific to your workflow or environment, rather than specific to a project.
