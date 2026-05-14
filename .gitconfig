@@ -11,5 +11,4 @@
 [diff]
 	tool = meld
 [core]
-	excludesfile = ~/.git-ignore
 	ignorecase = false
