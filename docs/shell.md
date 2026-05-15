@@ -67,32 +67,60 @@ Do **not** put in RC files:
 - **Profile** (`.profile`, `.bash_profile`, `.zprofile`) — loaded for **login shells only**, handles environment variables and PATH
 - **RC** (`.bashrc`, `.zshrc`) — loaded for **interactive non-login shells**, handles aliases and functions
 
-### Configuration files by shell
+## Recommendation
 
-**sh**
-1. `.profile` (login shells only)
+Less is more.
 
-**dash**
-1. `.profile` (login shells only)
+Use `zsh` and `oh-my-zsh`, don't worry about configuring other shells because you probably won't use them.
 
-**bash**
-1. `.bash_profile` (login shell; sources `.profile` if it exists)
-2. `.bashrc` (interactive non-login shells)
+Use `.zshrc`, not `.profile` or `.zprofile`. I know there are cases
+where one is better than the other, but simplicity wins here.
 
-**zsh**
-1. `.zprofile` (login shell; should source `.profile` to avoid duplication)
-2. `.zshrc` (interactive non-login shells)
+Having a single file `.zshrc` means you can't
+misconfigure login shells or non-zsh shells, so you can use them
+to recover if you manage to misconfigure `.zshrc`.
 
-**ksh**
-1. `.profile` (login shell)
-2. `.kshrc` or `.ENV` (interactive shells)
+And within that file it's ideal to keep the config down to what you actually need and use. Spring clean regularly.
 
-**fish**
-1. `~/.config/fish/config.fish` (all shells)
+### What config should you have?
 
-### Avoiding duplication
-Have `.zprofile` source `.profile`:
+It's a good idea to set `$EDITOR` and `$VISUAL`.
+
+#### `PATH`
+
+And of course your `$PATH`. You can fill your path up
+with all kinds of entries that might be useful, but honestly
+just add entries as you need them, don't try to perfect it.
+
+You might want some of these entries, depending on your setup:
+
 ```sh
-[[ -f ~/.profile ]] && source ~/.profile
+  ./node_modules/.bin
+  $HOME/.cargo/bin
+  $HOME/.gem/ruby/*/bin
+  $HOME/.local/bin
+  $HOME/Library/Python/*/bin
+  $HOME/bin
+  $HOME/go/bin
+  /opt/homebrew/bin
 ```
 
+When adding entries to your path, append your custom entries to the front. Include local/relative directories first, and fallback to
+user level and system level directories after that.
+
+#### `fnm`
+
+If you use `fnm` you might want a snippet like this:
+
+```sh
+if hash fnm
+then
+  eval "$(fnm env --use-on-cd --shell zsh)"
+fi
+```
+
+#### oh my zsh
+
+By default omz will bloat your `.zshrc` with a bunch of commented out
+config options. Keep it simple and delete anything that's commented out,
+the defaults work fine.

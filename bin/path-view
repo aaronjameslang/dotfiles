@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# Display PATH entries one per line
-
-echo "$PATH" | tr ':' '\n'
