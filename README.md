@@ -9,6 +9,7 @@ Many are out of date, almost all need better documentation.
 This repository uses GNU stow to manage dotfiles across multiple packages. Each package in the `packages/` directory can be installed independently:
 
 - **shell** — Shell configuration files (.profile, .zshrc, .zprofile) and documentation
+- **vim** — Vim configuration (.vimrc)
 
 ## Installation
 
