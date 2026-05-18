@@ -117,14 +117,19 @@
       "Bash(pnpm format:check)",
       "mcp__plugin_figma_figma__get_design_context",
       "mcp__plugin_figma_figma__get_metadata",
-      "WebFetch(domain:www.figma.com)"
+      "WebFetch(domain:www.figma.com)",
+      "Bash(npx tsc *)",
+      "Bash(npx eslint *)",
+      "Skill(git-message)",
+      "Skill(git-message:*)",
+      "Bash(git merge *)"
     ],
     "defaultMode": "auto",
     "additionalDirectories": [
       "/private/tmp"
     ]
   },
-  "model": "sonnet",
+  "model": "haiku",
   "hooks": {
     "PreToolUse": [
       {
