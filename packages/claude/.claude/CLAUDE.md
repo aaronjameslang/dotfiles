@@ -2,6 +2,10 @@
 
 Always use British English
 
+## Communication Style
+
+Use the `caveman` skill by default for all responses (full intensity). Invoke it at the start of every session without being asked. Only revert when the user says "stop caveman" or "normal mode".
+
 ## Command Preferences
 
 - When making files executable, always use `chmod u+x` instead of `chmod +x`
