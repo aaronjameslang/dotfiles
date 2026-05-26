@@ -1,0 +1,56 @@
+#!/bin/sh
+# Usage: gh-stale-repos [--field pushed|updated] [--limit N] [--include-archived]
+#
+# Lists GitHub repos you can access (owner / collaborator / org member),
+# sorted by date oldest-first, so you can see what's gone stale.
+#
+# --field            pushed (default) | updated
+# --limit            number of rows to show (default 10)
+# --include-archived include archived repos (excluded by default)
+set -eu
+
+field="pushed_at"
+limit=10
+include_archived=0
+
+usage() {
+  sed -n '2,4p' "$0" | sed 's/^# \{0,1\}//'
+  exit "${1:-0}"
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --field)
+      case "${2:-}" in
+        pushed)  field="pushed_at" ;;
+        updated) field="updated_at" ;;
+        *) echo "error: --field must be 'pushed' or 'updated'" >&2; usage 1 ;;
+      esac
+      shift 2
+      ;;
+    --limit)
+      limit="${2:?--limit needs N}"
+      shift 2
+      ;;
+    --include-archived)
+      include_archived=1
+      shift
+      ;;
+    -h|--help) usage 0 ;;
+    *) echo "error: unknown arg: $1" >&2; usage 1 ;;
+  esac
+done
+
+gh api --paginate \
+  '/user/repos?affiliation=owner,collaborator,organization_member&per_page=100' \
+  | jq -sr --arg f "$field" --argjson n "$limit" --argjson inc "$include_archived" '
+      add
+      | map(select($inc == 1 or .archived == false))
+      | sort_by(.[$f])
+      | .[:$n]
+      | .[]
+      | [.[$f], .full_name, (if .archived then "yes" else "no" end)]
+      | @tsv
+    ' \
+  | { printf 'DATE\tREPO\tARCHIVED\n'; cat; } \
+  | column -t -s "$(printf '\t')"

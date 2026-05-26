@@ -121,6 +121,7 @@
       "Bash(pnpm test:*)",
       "Bash(pnpm tsc:*)",
       "Bash(pnpm type-check:*)",
+      "Bash(pnpm typecheck *)",
       "WebFetch(domain:www.figma.com)",
       "mcp__linear-server__get_authenticated_user",
       "mcp__linear-server__get_document",
