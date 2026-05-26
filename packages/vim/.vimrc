@@ -32,4 +32,4 @@ set mouse=a
 set mousemodel=popup_setpos
 
 " Clipboard
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
