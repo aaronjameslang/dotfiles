@@ -1,5 +1,9 @@
 {
   "alwaysThinkingEnabled": true,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "effortLevel": "medium",
   "enabledPlugins": {
     "figma@claude-plugins-official": true
