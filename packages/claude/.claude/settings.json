@@ -1,4 +1,57 @@
 {
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "medium",
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true
+  },
+  "fastMode": true,
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "command": "afplay /System/Library/Sounds/Glass.aiff",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "command": "/Users/aaron.lang/.claude/hooks/log-permission-requests.sh",
+            "type": "command"
+          }
+        ],
+        "matcher": ""
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "echo 'Use a temporary file and -F instead' >&2; exit 2",
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash(git commit -m *)"
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "/Users/aaron.lang/.claude/hooks/auto-install-deps.sh",
+            "statusMessage": "Installing dependencies...",
+            "timeout": 120,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Bash(echo $?)",
@@ -125,58 +178,5 @@
       "mcp__plugin_figma_figma__get_screenshot"
     ]
   },
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash(git commit -m *)",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo 'Use a temporary file and -F instead' >&2; exit 2"
-          }
-        ]
-      }
-    ],
-    "PermissionRequest": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/aaron.lang/.claude/hooks/log-permission-requests.sh"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "afplay /System/Library/Sounds/Glass.aiff"
-          }
-        ]
-      }
-    ],
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/Users/aaron.lang/.claude/hooks/auto-install-deps.sh",
-            "timeout": 120,
-            "statusMessage": "Installing dependencies..."
-          }
-        ]
-      }
-    ]
-  },
-  "enabledPlugins": {
-    "figma@claude-plugins-official": true
-  },
-  "alwaysThinkingEnabled": true,
-  "effortLevel": "medium",
-  "fastMode": true,
   "theme": "light"
 }
