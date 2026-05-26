@@ -49,8 +49,27 @@ gh api --paginate \
       | sort_by(.[$f])
       | .[:$n]
       | .[]
-      | [.[$f], .full_name, (if .archived then "yes" else "no" end)]
+      | [.[$f], .full_name, (if .archived then "yes" else "no" end), .html_url]
       | @tsv
     ' \
-  | { printf 'DATE\tREPO\tARCHIVED\n'; cat; } \
-  | column -t -s "$(printf '\t')"
+  | awk -F'\t' '
+      BEGIN {
+        h1 = "DATE"; h2 = "REPO"; h3 = "ARCHIVED"
+        w1 = length(h1); w2 = length(h2); w3 = length(h3)
+      }
+      {
+        date[NR] = $1; repo[NR] = $2; arch[NR] = $3; url[NR] = $4
+        if (length($1) > w1) w1 = length($1)
+        if (length($2) > w2) w2 = length($2)
+        if (length($3) > w3) w3 = length($3)
+      }
+      END {
+        esc = sprintf("%c", 27)
+        printf "%-*s  %-*s  %-*s\n", w1, h1, w2, h2, w3, h3
+        for (i = 1; i <= NR; i++) {
+          pad = w2 - length(repo[i])
+          link = esc "]8;;" url[i] esc "\\" repo[i] esc "]8;;" esc "\\"
+          printf "%-*s  %s%*s  %-*s\n", w1, date[i], link, pad, "", w3, arch[i]
+        }
+      }
+    '
