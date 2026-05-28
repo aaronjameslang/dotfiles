@@ -61,16 +61,16 @@
       "Bash(echo $?)",
       "Bash(fnm current:*)",
       "Bash(fnm use:*)",
-      "Bash(gh api repos/*/*/pulls*)",
-      "Bash(gh api repos/*/*/issues/*/comments*)",
       "Bash(gh api repos/*/*/commits/*)",
+      "Bash(gh api repos/*/*/issues/*/comments*)",
+      "Bash(gh api repos/*/*/pulls*)",
       "Bash(gh pr checks*)",
-      "Bash(gh pr status*)",
       "Bash(gh pr create*)",
       "Bash(gh pr diff*)",
       "Bash(gh pr edit:*)",
       "Bash(gh pr list*)",
       "Bash(gh pr ready:*)",
+      "Bash(gh pr status*)",
       "Bash(gh pr view*)",
       "Bash(gh run list*)",
       "Bash(gh run view*)",
@@ -125,6 +125,7 @@
       "Bash(pnpm tsc:*)",
       "Bash(pnpm type-check:*)",
       "Bash(pnpm typecheck *)",
+      "Bash(pnpm view *)",
       "WebFetch(domain:www.figma.com)",
       "mcp__linear-server__get_authenticated_user",
       "mcp__linear-server__get_document",
@@ -167,6 +168,54 @@
       "mcp__plugin_figma_figma__get_metadata",
       "mcp__plugin_figma_figma__get_screenshot"
     ]
+  },
+  "sandbox": {
+    "allowUnsandboxedCommands": true,
+    "enabled": false,
+    "excludedCommands": [
+      "docker",
+      "npx playwright",
+      "pnpm dev",
+      "pnpm exec playwright",
+      "pnpm start",
+      "pnpm test:e2e"
+    ],
+    "failIfUnavailable": false,
+    "filesystem": {
+      "allowWrite": [
+        "./",
+        "/tmp",
+        "~/.cache",
+        "~/.claude",
+        "~/.npm",
+        "~/Library/Caches",
+        "~/Library/pnpm"
+      ],
+      "denyRead": [
+        "~/.aws/credentials",
+        "~/.gnupg",
+        "~/.ssh"
+      ]
+    },
+    "network": {
+      "allowedDomains": [
+        "*.miro.com",
+        "127.0.0.1",
+        "api.anthropic.com",
+        "api.figma.com",
+        "api.github.com",
+        "api.linear.app",
+        "api.notion.com",
+        "codeload.github.com",
+        "github.com",
+        "localhost",
+        "objects.githubusercontent.com",
+        "raw.githubusercontent.com",
+        "registry.npmjs.org",
+        "user-images.githubusercontent.com",
+        "www.figma.com"
+      ]
+    }
   },
   "theme": "light"
 }
