@@ -18,6 +18,25 @@ usage() {
   exit "${1:-0}"
 }
 
+# Select account if multiple authorized
+select_account() {
+  local hosts
+  hosts=$(gh auth status --json hosts --jq '.hosts.["github.com"].[].login' 2>/dev/null || echo "github.com")
+
+  local host_count
+  host_count=$(echo "$hosts" | wc -l)
+
+  if [ "$host_count" -gt 1 ]; then
+    echo "Multiple GitHub accounts:" >&2
+    echo "$hosts" | nl >&2
+    printf "Select (1-%d): " "$host_count" >&2
+    read -r selection
+    echo "$hosts" | sed -n "${selection}p"
+  else
+    echo "$hosts" | head -1
+  fi
+}
+
 while [ $# -gt 0 ]; do
   case "$1" in
     --field)
@@ -40,6 +59,10 @@ while [ $# -gt 0 ]; do
     *) echo "error: unknown arg: $1" >&2; usage 1 ;;
   esac
 done
+
+# Select account if multiple authorized
+login=$(select_account)
+gh auth switch --user "$login"
 
 gh api --paginate \
   '/user/repos?affiliation=owner,collaborator,organization_member&per_page=100' \
